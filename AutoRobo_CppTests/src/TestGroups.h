@@ -13,12 +13,13 @@
 
 namespace AutoRobo
 {
-	DECLARE_TEST_GROUP(MemoryTestGroup);
+	//DECLARE_TEST_GROUP(MemoryTestGroup);
 	DECLARE_TEST_GROUP(MathTestGroup);
 	DECLARE_TEST_GROUP(TimeTestGroup);
 	DECLARE_TEST_GROUP(ModuleTestGroup);
 	DECLARE_TEST_GROUP(PinsTestGroup);
 	DECLARE_TEST_GROUP(ButtonsTestGroup);
+	DECLARE_TEST_GROUP(LcdHandlerTestGroup);
 }
 
 

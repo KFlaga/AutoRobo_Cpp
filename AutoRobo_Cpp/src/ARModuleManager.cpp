@@ -24,12 +24,12 @@ namespace AutoRobo
 		unregisterAll();
 	}
 
-	void ModuleManager::start(Timer* timer, TimeSpan updateInterval)
+	void ModuleManager::start(not_null<Timer*> timer, TimeSpan updateInterval)
 	{
 		if(!_isRunning)
 		{
 			_timer = timer;
-			if(_timer != nullptr && updateInterval > Microsecond(1))
+			if(updateInterval > Microsecond(1))
 			{
 				for(auto module : _modules)
 				{
@@ -58,7 +58,7 @@ namespace AutoRobo
 		}
 	}
 
-	void ModuleManager::registerModule(Module* module)
+	void ModuleManager::registerModule(not_null<Module*> module)
 	{
 		_modules.push_back(module);
 		if(_isRunning)

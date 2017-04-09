@@ -17,12 +17,17 @@ public:
 
 	void test() override
 	{
+#ifndef DISABLE_TIMESPAN_RANGE_CHECKS
 		// Overflowed time span should have max time
 		TimeSpan t1(Microsecond(TimeSpan::maxMicroseconds));
 		TimeSpan t2(Microsecond(1));
 		TimeSpan t3 = t1 + t2;
-#ifndef DISABLE_TIMESPAN_RANGE_CHECKS
 		assertTrue(t3.getMicroseconds().time == TimeSpan::maxMicroseconds);
+#else
+		TimeSpan t1(Microsecond(3050));
+		TimeSpan t2(Milisecond(50));
+		TimeSpan t3 = t1 + t2;
+		assertTrue(t3.getMicroseconds().time == 53050);
 #endif
 	}
 };
@@ -37,11 +42,11 @@ public:
 
 	void test() override
 	{
+#ifndef DISABLE_TIMESPAN_RANGE_CHECKS
 		// Underflowed time span should have 0 time
 		TimeSpan t1(Microsecond(TimeSpan::maxMicroseconds - 1));
 		TimeSpan t2(Microsecond(TimeSpan::maxMicroseconds));
 		TimeSpan t3 = t1 - t2;
-#ifndef DISABLE_TIMESPAN_RANGE_CHECKS
 		assertTrue(t3.getMicroseconds().time == 0);
 #endif
 	}

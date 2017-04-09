@@ -14,7 +14,6 @@ namespace AutoRobo
 {
 	typedef std::size_t size_t;
 
-
 	// Dynamic memory allocator intended to use on user heap
 	// (specified in memory layout)
 	// For now just wraps malloc/free

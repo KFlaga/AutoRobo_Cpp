@@ -20,7 +20,8 @@ namespace AutoRobo
 #define DEBUG_EXPR(expr) expr
 #else
 	// Does nothing in release mode
-	inline void debugCheck(bool condition) { }
+	inline void debugCheck(bool condition)
+	{}
 #define DEBUG_EXPR(expr)
 #endif
 
@@ -29,7 +30,9 @@ namespace AutoRobo
 	template<typename T>
 	struct _TypeIdHelper
 	{
-		static void func() {  }
+		static void func()
+		{
+		}
 	};
 
 	template<typename T>
@@ -38,6 +41,11 @@ namespace AutoRobo
 		return reinterpret_cast<TypeId>(&_TypeIdHelper<T>::func);
 	}
 
+	// Simple not_null - does not enforce value to be not null
+	// but serves only that argument should not be null and
+	// is not checked inside function
+	template<typename T>
+	using not_null = T;
 }
 
 #define STORE_IN_FLASH __attribute__ ((section(".rodata")))

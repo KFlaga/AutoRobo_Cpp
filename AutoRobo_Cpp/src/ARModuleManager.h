@@ -38,7 +38,7 @@ namespace AutoRobo
 		// Uses supplied timer and interval for this task
 		// Calls 'start' on each module
 		// If manager is already running, does nothing
-		void start(Timer* timer, TimeSpan updateInterval);
+		void start(not_null<Timer*> timer, TimeSpan updateInterval);
 
 		// Stops updating modules
 		// Calls 'stop' on each module
@@ -48,7 +48,7 @@ namespace AutoRobo
 		// Registers module for updates
 		// If Manager is started, then it calls 'start' on this module and updates with others
 		// Must not be called from within 'update' of any module
-		void registerModule(Module* module);
+		void registerModule(not_null<Module*> module);
 
 		// Unregisters module from updates
 		// If Manager is started, then it calls 'stop' on this module
@@ -69,7 +69,7 @@ namespace AutoRobo
 		// If manager is running, stops first
 		void unregisterAll();
 
-		// Returns module with given TypeId if such is registered
+		// Returns module with given TypeId if such is registered or nullptr
 		Module* findModule(TypeId typeId);
 	private:
 		void update();
